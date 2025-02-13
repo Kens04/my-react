@@ -1,0 +1,31 @@
+import PropTypes from "prop-types";
+
+export function Member() {}
+function TypeProp(props) {
+  console.log(props);
+  return <p>結果はコンソールを確認してください。</p>;
+}
+
+TypeProp.propTypes = {
+  // Menmber型のプロパティ
+  prop1: PropTypes.instanceOf(Member),
+  // 男性、女性、その他の中のどれか
+  prop2: PropTypes.oneOf(["男性", "女性", "その他"]),
+  // 文字列、数値、ブール値のいずれか
+  prop3: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.bool,
+  ]),
+  prop4: PropTypes.arrayOf(PropTypes.number),
+  // 数値型のオブジェクト
+  prop5: PropTypes.objectOf(PropTypes.number),
+  // name、age、sexプロパティを持つオブジェクト
+  prop6: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    age: PropTypes.number,
+    sex: PropTypes.oneOf(["男性", "女性", "その他"]),
+  }),
+};
+
+export default TypeProp;
